@@ -16,7 +16,7 @@
       "binding": "DB",
       "database_name": "greb-meals",
       // Filled in once the D1 database exists in Brian's Cloudflare account.
-      "database_id": "00000000-0000-0000-0000-000000000000",
+      "database_id": "13def1f2-a86a-4e55-bb0d-fa6e9e9529a0",
       "migrations_dir": "drizzle"
     }
   ],
