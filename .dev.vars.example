@@ -1,0 +1,3 @@
+# Local development only. Copy to .dev.vars (git-ignored).
+# Skips Cloudflare Access and treats every request as this user.
+DEV_AUTH_EMAIL=dev@example.com

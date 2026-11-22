@@ -1,0 +1,30 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "greb-meals",
+  "main": "worker/index.ts",
+  "compatibility_date": "2026-11-01",
+  "compatibility_flags": ["nodejs_compat"],
+  "observability": { "enabled": true },
+  "assets": {
+    "directory": "./dist",
+    "binding": "ASSETS",
+    "not_found_handling": "single-page-application",
+    "run_worker_first": ["/api/*"]
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "greb-meals",
+      // Filled in once the D1 database exists in Brian's Cloudflare account.
+      "database_id": "00000000-0000-0000-0000-000000000000",
+      "migrations_dir": "drizzle"
+    }
+  ],
+  "vars": {
+    "APP_TZ": "America/Chicago",
+    // Cloudflare Access: team domain (e.g. "grebs.cloudflareaccess.com") and the application's AUD tag.
+    // Public identifiers, not secrets. Until both are set every /api request is refused.
+    "ACCESS_TEAM_DOMAIN": "",
+    "ACCESS_AUD": ""
+  }
+}

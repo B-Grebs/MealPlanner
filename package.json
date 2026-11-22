@@ -1,0 +1,39 @@
+{
+  "name": "greb-meals",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Family meal planner: recipes, monthly plans, shopping lists. Cloudflare Worker + D1 + React PWA.",
+  "scripts": {
+    "dev": "npm run db:migrate:local && concurrently -k -n api,web \"wrangler dev --port 8787\" \"vite\"",
+    "dev:api": "wrangler dev --port 8787",
+    "build": "tsc -b && vite build",
+    "typecheck": "tsc -b",
+    "test": "vitest run",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate:local": "wrangler d1 migrations apply DB --local",
+    "db:migrate:remote": "wrangler d1 migrations apply DB --remote",
+    "deploy": "npm run build && wrangler d1 migrations apply DB --remote && wrangler deploy",
+    "smoke": "node scripts/smoke.mjs"
+  },
+  "dependencies": {
+    "drizzle-orm": "^0.45.0",
+    "hono": "^4.13.0",
+    "jose": "^6.2.0",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "react-router-dom": "^7.18.0"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^5.20261119.1",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@vitejs/plugin-react": "^5.1.0",
+    "concurrently": "^9.0.0",
+    "drizzle-kit": "^0.31.0",
+    "typescript": "^5.9.0",
+    "vite": "^8.0.0",
+    "vitest": "^5.1.1",
+    "wrangler": "^4.160.0"
+  }
+}
