@@ -24,7 +24,7 @@
     "APP_TZ": "America/Chicago",
     // Cloudflare Access: team domain (e.g. "grebs.cloudflareaccess.com") and the application's AUD tag.
     // Public identifiers, not secrets. Until both are set every /api request is refused.
-    "ACCESS_TEAM_DOMAIN": "",
-    "ACCESS_AUD": ""
+    "ACCESS_TEAM_DOMAIN": "bgrebs.cloudflareaccess.com",
+    "ACCESS_AUD": "44cd8557423364d0430d0ee554026b7337676b2731306b616f81fc05f6e8e68a"
   }
 }

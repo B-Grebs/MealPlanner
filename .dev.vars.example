@@ -1,3 +1,6 @@
 # Local development only. Copy to .dev.vars (git-ignored).
 # Skips Cloudflare Access and treats every request as this user.
 DEV_AUTH_EMAIL=dev@example.com
+# Local dev skips Cloudflare Access (the deployed values live in wrangler.jsonc).
+ACCESS_AUD=""
+ACCESS_TEAM_DOMAIN=""
