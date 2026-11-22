@@ -75,6 +75,7 @@ check("recipe search", list.status === 200 && list.json.length >= 3, list.json);
 const tacos = list.json.find((r) => r.title === "Smoke Tacos");
 const one = await call("GET", `/api/recipes/${tacos.id}`);
 check("recipe detail has ingredients", one.json.ingredients.length === 5 && one.json.tags.includes("tacos"), one.json);
+check("recipe ingredients carry names and aisles", one.json.ingredients.every((i) => typeof i.name === "string" && i.name && (i.aisle === null || typeof i.aisle === "string")), one.json.ingredients);
 
 const upd = await call("PUT", `/api/recipes/${tacos.id}`, {
   ...one.json,

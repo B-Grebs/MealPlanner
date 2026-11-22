@@ -126,7 +126,9 @@ export async function saveRecipe(
 export async function loadRecipe(db: DB, id: number) {
   const r = await db.query.recipes.findFirst({ where: eq(recipes.id, id) });
   if (!r) return null;
-  const [ingRows, tagRows] = await db.batch([
+  // Not db.batch: D1 batch results come back keyed by column name, so the two
+  // "name" columns (ingredient, aisle) would collide.
+  const [ingRows, tagRows] = await Promise.all([
     db
       .select({
         id: recipeIngredients.id,
